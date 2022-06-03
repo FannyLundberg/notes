@@ -1,0 +1,17 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "userName": "admin",
+    "password": "admin"
+}
+
+###
+
+POST http://localhost:3000/documents
+Content-Type: application/json
+
+{
+    "title": "Titel",
+    "text": "Ett till dokument"
+}

@@ -1,0 +1,11 @@
+<section>
+    <h2>Välkommen till dokumenthanteraren!</h2>
+
+    <form>
+        <input type="text" name="userName" #userName placeholder="Användarnamn">
+        <input type="text" name="password" #password placeholder="Lösenord">
+    </form>
+
+    <button (click)="checkLogin(userName.value, password.value)">Logga in</button>
+
+</section>
