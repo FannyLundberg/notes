@@ -6,9 +6,9 @@
 
     <section id="documentSection">
         <h2>Alla dokument</h2>
-        <div>
-            <h3>Dokumentnamn</h3>
-            <p>Datum</p>
+        <div *ngFor="let d of data">
+            <h3>{{ d.title }} </h3>
+            <p>{{ d.date }} </p>
             <button>Redigera</button>
             <button>Läs</button>
         </div>

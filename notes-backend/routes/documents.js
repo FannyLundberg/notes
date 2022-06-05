@@ -29,4 +29,28 @@ router.post("/", function(req, res) {
 });
 
 
+// Hämta alla dokument
+router.get("/", function(req, res) {
+
+    req.app.locals.con.connect((error) => {
+        if (error) {
+            console.log(error)
+        }
+    
+        let sql = `
+            SELECT * FROM documents
+        `;
+    
+        req.app.locals.con.query(sql, (error, documents) => {
+            if (error) {
+            console.log(error)
+            }
+            
+            res.json(documents);
+            console.log(documents)
+        })
+    })
+});
+
+
 module.exports = router;

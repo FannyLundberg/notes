@@ -15,3 +15,9 @@ Content-Type: application/json
     "title": "Titel",
     "text": "Ett till dokument"
 }
+
+
+###
+
+GET http://localhost:3000/documents
+Content-Type: application/json

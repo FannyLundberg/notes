@@ -1,11 +1,11 @@
 <section>
+    <input type="text" placeholder="Titel" #title>
     <editor 
         apiKey="sy5qpdvs7ygvd1tcyaxond8i4ywqzo5s8aw3ui3jev7zr7lh"
-        [init]="{
-            menubar: false
-        }"
+        [init]="{menubar: false}"
+        (keyup)="handleChange($event)"
         #content >
     </editor>
 
-    <button (click)="saveDoc(content)">Spara dokument</button>
+    <button (click)="saveDoc(title.value, content)">Spara dokument</button>
 </section>
