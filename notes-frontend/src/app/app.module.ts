@@ -8,6 +8,7 @@ import { LoggedInComponent } from './components/logged-in/logged-in.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CreateDocumentComponent } from './components/create-document/create-document.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { WrongLoginComponent } from './components/wrong-login/wrong-login.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     LoginComponent,
     LoggedInComponent,
     NotFoundComponent,
-    CreateDocumentComponent
+    CreateDocumentComponent,
+    WrongLoginComponent
   ],
   imports: [
     BrowserModule,

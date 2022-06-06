@@ -28,8 +28,10 @@ export class CheckLoginService {
       if (data.message == "success") {
         console.log("Rätt inloggningsuppgifter")
         location.href = "http://localhost:4200/loggedin"
+        
       } else {
         console.log("Fel inloggningsuppgifter")
+        location.href = "http://localhost:4200/wronglogin"
       }
     })
   }

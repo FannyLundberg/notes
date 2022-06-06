@@ -2,8 +2,13 @@
     <input type="text" placeholder="Titel" #title>
     <editor 
         apiKey="sy5qpdvs7ygvd1tcyaxond8i4ywqzo5s8aw3ui3jev7zr7lh"
-        [init]="{menubar: false}"
-        (keyup)="handleChange($event)"
+        (onSaveContent)="handleInput(content)"
+        [init]="{
+            menubar: false,
+            toolbar: 
+            'undo redo | bold italic underline | backcolor forecolor | \
+            alignleft aligncenter alignright | outdent indent'
+        }"
         #content >
     </editor>
 

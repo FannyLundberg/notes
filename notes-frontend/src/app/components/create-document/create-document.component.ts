@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditorComponent } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-create-document',
@@ -14,15 +15,13 @@ export class CreateDocumentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleChange(event: any) {
-    this.documentContent = (event.target as HTMLInputElement).value;
-
-    console.log(this.documentContent);
+  handleInput(content: any) {
+    console.log("Hej" + content)
   }
 
   saveDoc(title: string, content: any) {
-    console.log(title)
-    console.log(content)
+    console.log("titel: " + title)
+    console.log("content: " + content)
     console.log("Klickat på Spara dokument")
     // console.log(this.documentContent)
   }

@@ -21,6 +21,11 @@ main {
     max-height: fit-content;
 }
 
+h3 {
+    display: inline;
+    margin-right: 2%;
+}
+
 footer {
     height: 5vh;
     background-color: rgb(32, 63, 73);

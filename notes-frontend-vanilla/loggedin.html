@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokumenthanteraren - Logga in</title>
+    <title>Dokumenthanteraren - Inloggat läge</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <script defer src="loggedin.js"></script>
 </head>
 <body>
-    <header></header>
+    <header>
+        <h1>Logotype</h1>
+    </header>
 
     <main>
-        <h2>Välkommen till dokumenthanteraren!</h2>
-        <h3>Inloggat läge</h3>
-
+        <section>
+            <button id="newDocBtn">Skapa nytt dokument</button>
+            <button id="logOutBtn">Logga ut</button>
+        </section>
+        
+        <section>
+            <h2>Alla dokument</h2>
+            <div id="documentContainer"></div>
+        </section>
     </main>
 
     <footer></footer>
