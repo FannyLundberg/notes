@@ -21,9 +21,41 @@ main {
     max-height: fit-content;
 }
 
+button {
+    margin-left: 2%;
+}
+
 h3 {
     display: inline;
     margin-right: 2%;
+}
+
+textarea {
+    display: block;
+    width: 70%;
+    min-height: 200px;
+    max-height: fit-content;
+}
+
+input {
+    display: block;
+    width: 50%;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+button {
+    margin-top: 1%;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5%;
+    box-shadow: 1px 1px 2px rgb(2, 2, 2);
+}
+
+#newDocSection,
+#readDocSection {
+    margin-top: 5%;
+    background-color: rgb(32, 63, 73);
 }
 
 footer {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokumenthanteraren - Inloggat läge</title>
     <link rel="stylesheet" href="style.css">
+    <script src="node_modules/tinymce/tinymce.min.js"></script>
     <script defer src="loggedin.js"></script>
 </head>
 <body>
@@ -21,8 +22,12 @@
         
         <section>
             <h2>Alla dokument</h2>
-            <div id="documentContainer"></div>
+            <div id="docContainer"></div>
         </section>
+
+        <section id="newDocSection"></section>
+
+        <section id="readDocSection"></section>
     </main>
 
     <footer></footer>
