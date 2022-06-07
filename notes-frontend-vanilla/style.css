@@ -35,13 +35,23 @@ main {
     max-height: fit-content;
 }
 
-button {
-    margin-left: 2%;
+#loginMain {
+    text-align: center;
+}
+
+#welcomeH2 {
+    padding-top: 10vh;
+    text-align: center;
 }
 
 h3 {
     display: inline;
     margin-right: 2%;
+}
+
+#userName, 
+#password {
+    margin: 0 auto;
 }
 
 #textContent {
@@ -64,11 +74,16 @@ button {
     border: none;
     padding: 0.5%;
     box-shadow: 1px 1px 2px rgb(2, 2, 2);
+    margin-left: 2%;
 }
 
-#newDocSection, 
-#readDocSection {
-    margin-top: 5%;
+#submitLoginBtn {
+    margin-top: 2%;
+    padding: 1.5%;
+}
+
+#docSection {
+    margin-top: 10%;
     background-color: rgb(32, 63, 73);
 }
 

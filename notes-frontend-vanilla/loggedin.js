@@ -2,9 +2,9 @@
 const newDocBtn = document.getElementById("newDocBtn");
 const logOutBtn = document.getElementById("logOutBtn");
 const docContainer = document.getElementById("docContainer");
-const newDocSection = document.getElementById("newDocSection");
+const docSection = document.getElementById("docSection");
 const main = document.getElementById("main");
-const readDocSection = document.getElementById("readDocSection");
+// const readDocSection = document.getElementById("readDocSection");
 const viewDocs = document.getElementById("viewDocs");
 
 let documents = [];
@@ -45,7 +45,7 @@ function addNewDocument(newDocTitle, newDocContent) {
       console.log(data[0])
 
       getDocuments();
-      newDocSection.remove();
+      docSection.remove();
     })
 }
 
@@ -110,13 +110,13 @@ function actionBtn(id, className) {
 // Funktion för att redigera ett specifikt dokument
 function editDoc(title) {
 
-    newDocSection.innerHTML = "";
+    docSection.innerHTML = "";
     readAndEdit(title);
 
     // Knapp för att spara uppdatering av dokument
     let submitUpdateBtn = document.createElement("button");
     submitUpdateBtn.innerText = "Uppdatera dokument";
-    newDocSection.append(submitUpdateBtn);
+    docSection.append(submitUpdateBtn);
         
     // Klick på Uppdatera dokument-knapp
     submitUpdateBtn.addEventListener("click", () => {
@@ -148,7 +148,7 @@ function addUpdateDoc(title, updatedContent) {
       console.log(data)
 
       getDocuments();
-      newDocSection.remove();
+      docSection.remove();
     })
 }
 
@@ -156,20 +156,20 @@ function addUpdateDoc(title, updatedContent) {
 // Klick på Skapa nytt dokument-knappen
 newDocBtn.addEventListener("click", () => {
 
-    newDocSection.innerHTML = "";
+    docSection.innerHTML = "";
 
     // Titel-input
     let inputTitle = document.createElement("input");
     inputTitle.placeholder = "Titel";
     inputTitle.id = "titleContent";
-    newDocSection.append(inputTitle);
+    docSection.append(inputTitle);
 
     showTextarea();
 
     // Submit-knapp för titel och textarea
     let submitNewDocBtn = document.createElement("button");
     submitNewDocBtn.innerText = "Spara dokument";
-    newDocSection.append(submitNewDocBtn);
+    docSection.append(submitNewDocBtn);
     
     // Klick på Spara dokument-knappen
     submitNewDocBtn.addEventListener("click", () => {
@@ -189,7 +189,7 @@ function showTextarea() {
     // Textarea
     let textArea = document.createElement("textarea");
     textArea.id = "textContent";
-    newDocSection.append(textArea);
+    docSection.append(textArea);
 
     // Inställningar för textarea
     tinymce.init({
@@ -226,23 +226,23 @@ function readDoc(title) {
     .then(data => {
         console.log(data)
 
-        readDocSection.innerHTML = "";
+        docSection.innerHTML = "";
 
         let readTitle = document.createElement("h3");
         readTitle.innerText = data[0].title;
-        readDocSection.append(readTitle);
+        docSection.append(readTitle);
 
         let readText = document.createElement("p");
         readText.innerHTML = data[0].text;
-        readDocSection.append(readText);
+        docSection.append(readText);
 
         let closedDoc = document.createElement("button");
         closedDoc.innerHTML = "Stäng dokument";
-        readDocSection.append(closedDoc);
+        docSection.append(closedDoc);
 
         // Vid klick på Stäng dokumen-knappen
         closedDoc.addEventListener("click", () => {
-            readDocSection.innerHTML = "";
+            docSection.innerHTML = "";
         })
     })
 }
@@ -267,13 +267,13 @@ function readAndEdit(title) {
 
         let title = document.createElement("h3");
         title.innerHTML = data[0].title;
-        newDocSection.prepend(title);
+        docSection.prepend(title);
 
         // Textarea
         let textArea = document.createElement("textarea");
         textArea.id = "textContent";
         textArea.innerHTML = data[0].text;
-        newDocSection.append(textArea);
+        docSection.append(textArea);
  
         // Inställningar för textarea
         tinymce.init({
@@ -292,11 +292,11 @@ function readAndEdit(title) {
 
         let closedEdit = document.createElement("button");
         closedEdit.innerHTML = "Avbryt";
-        newDocSection.append(closedEdit);
+        docSection.append(closedEdit);
 
         // Vid klick på Stäng dokumen-knappen
         closedEdit.addEventListener("click", () => {
-            newDocSection.innerHTML = "";
+            docSection.innerHTML = "";
         })
     })
 }
