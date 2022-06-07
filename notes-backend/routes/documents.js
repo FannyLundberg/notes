@@ -69,7 +69,7 @@ router.put("/", function(req, res) {
 
         let sql = `
             UPDATE documents 
-            SET text = "${req.body.text}"
+            SET text = '${req.body.text}'
             WHERE title = "${req.body.title}"
         `;
     

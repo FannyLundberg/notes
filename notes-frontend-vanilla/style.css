@@ -16,6 +16,20 @@ header {
     background-color: rgb(32, 63, 73);
 }
 
+#subMenu {
+    background-color: rgb(29, 53, 61);
+    height: 5vh;
+    display: flex;  
+    justify-content: space-between;
+}
+
+#subMenu button {
+    height: 30px;
+    width: fit-content;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
 main {
     min-height: 85vh;
     max-height: fit-content;
@@ -30,8 +44,7 @@ h3 {
     margin-right: 2%;
 }
 
-textarea {
-    display: block;
+#textContent {
     width: 70%;
     min-height: 200px;
     max-height: fit-content;
@@ -41,7 +54,8 @@ input {
     display: block;
     width: 50%;
     border-radius: 5px;
-    padding: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 button {
@@ -52,7 +66,7 @@ button {
     box-shadow: 1px 1px 2px rgb(2, 2, 2);
 }
 
-#newDocSection,
+#newDocSection, 
 #readDocSection {
     margin-top: 5%;
     background-color: rgb(32, 63, 73);

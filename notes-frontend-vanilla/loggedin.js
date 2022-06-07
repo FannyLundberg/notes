@@ -3,7 +3,9 @@ const newDocBtn = document.getElementById("newDocBtn");
 const logOutBtn = document.getElementById("logOutBtn");
 const docContainer = document.getElementById("docContainer");
 const newDocSection = document.getElementById("newDocSection");
+const main = document.getElementById("main");
 const readDocSection = document.getElementById("readDocSection");
+const viewDocs = document.getElementById("viewDocs");
 
 let documents = [];
 
@@ -25,7 +27,6 @@ function getDocuments() {
 
 // Addera nytt dokument
 function addNewDocument(newDocTitle, newDocContent) {
-    console.log(newDocTitle, newDocContent)
 
     const newDoc = {
       "title": newDocTitle,
@@ -82,27 +83,24 @@ function printDocuments(documents) {
 }
 
 
-// Klick i diven
+// Klick på Redigera- eller Läs-knappen
 docContainer.addEventListener("click", (event) => {
-    console.log("Klick i div")
 
     if (event.target.className === "editBtn" || event.target.className === "readBtn") {
         actionBtn(event.target.parentNode.id, event.target.className)
     }
 })
 
-
-// Klick på Redigera- eller Läs-knappen
 function actionBtn(id, className) {
 
+    // Om klick på Läs-knappen
     if (className == "readBtn") {
         console.log("Läsa dokument med id: " + id)
         readDoc(id);
-
+    // Om klick på Redigera-knappen
     } else if (className == "editBtn") {
         console.log("Redigera dokument med id: " + id)
         editDoc(id);
-
     } else {
         console.log("Hamnar i else")
     }
@@ -111,31 +109,27 @@ function actionBtn(id, className) {
 
 // Funktion för att redigera ett specifikt dokument
 function editDoc(title) {
-    console.log("Funktion för att redigera ett dokument", title)
 
     newDocSection.innerHTML = "";
+    readAndEdit(title);
 
-    readDoc(title);
-    showTextarea();
-
-        // Knapp för att spara uppdatering av dokument
-        let submitUpdateBtn = document.createElement("button");
-        submitUpdateBtn.innerText = "Uppdatera dokument";
-        newDocSection.append(submitUpdateBtn);
+    // Knapp för att spara uppdatering av dokument
+    let submitUpdateBtn = document.createElement("button");
+    submitUpdateBtn.innerText = "Uppdatera dokument";
+    newDocSection.append(submitUpdateBtn);
         
-        // Klick på Uppdatera dokument-knapp
-        submitUpdateBtn.addEventListener("click", () => {
-            console.log(document.getElementById("textContent").value)
-            let updatedContent = document.getElementById("textContent").value;
+    // Klick på Uppdatera dokument-knapp
+    submitUpdateBtn.addEventListener("click", () => {
+        console.log(document.getElementById("textContent").value)
+        let updatedContent = document.getElementById("textContent").value;
         
-            addUpdateDoc(title, updatedContent)
-        })
+        addUpdateDoc(title, updatedContent)
+    })
 }
 
 
 // Funktion för att uppdatera dokument
 function addUpdateDoc(title, updatedContent) {
-    console.log("Uppdatering av dokument", updatedContent)
 
     const updateDoc = {
         "title": title,
@@ -210,7 +204,6 @@ function showTextarea() {
                 editor.save();
             })
         }
-       
     })
 }
 
@@ -242,13 +235,75 @@ function readDoc(title) {
         let readText = document.createElement("p");
         readText.innerHTML = data[0].text;
         readDocSection.append(readText);
+
+        let closedDoc = document.createElement("button");
+        closedDoc.innerHTML = "Stäng dokument";
+        readDocSection.append(closedDoc);
+
+        // Vid klick på Stäng dokumen-knappen
+        closedDoc.addEventListener("click", () => {
+            readDocSection.innerHTML = "";
+        })
+    })
+}
+
+
+function readAndEdit(title) {
+
+    let searchDoc = {
+        "title": title
+    }
+
+    fetch("http://localhost:3000/documents/read", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(searchDoc)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+
+        let title = document.createElement("h3");
+        title.innerHTML = data[0].title;
+        newDocSection.prepend(title);
+
+        // Textarea
+        let textArea = document.createElement("textarea");
+        textArea.id = "textContent";
+        textArea.innerHTML = data[0].text;
+        newDocSection.append(textArea);
+ 
+        // Inställningar för textarea
+        tinymce.init({
+            selector: "#textContent",
+            plugins: "code",
+            menubar: false,
+            toolbar: "undo redo | bold italic underline | backcolor | \
+            alignleft aligncenter alignright | outdent indent | code ",
+        
+            setup: function(editor) {
+                editor.on("change", () => {
+                    editor.save();
+                })
+            }
+        })
+
+        let closedEdit = document.createElement("button");
+        closedEdit.innerHTML = "Avbryt";
+        newDocSection.append(closedEdit);
+
+        // Vid klick på Stäng dokumen-knappen
+        closedEdit.addEventListener("click", () => {
+            newDocSection.innerHTML = "";
+        })
     })
 }
 
 
 // Klick på Logga ut-knappen
 logOutBtn.addEventListener("click", () => {
-        
-    console.log("Klick på Logga ut");
+
     window.location.href = "index.html";
 })
