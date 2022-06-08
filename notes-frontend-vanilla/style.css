@@ -49,6 +49,14 @@ h3 {
     margin-right: 2%;
 }
 
+#blockH3 {
+    display: block;
+}
+
+h4 {
+    display: inline;
+}
+
 #userName, 
 #password {
     margin: 0 auto;
@@ -83,8 +91,25 @@ button {
 }
 
 #docSection {
-    margin-top: 10%;
+    margin: 0 auto;
+    margin-top: 5%;
     background-color: rgb(32, 63, 73);
+    width: 100%;
+    padding: 10%;
+    margin-bottom: 2%;
+}
+
+.docHeading {
+    font-size: 1.7rem;
+}
+
+#submitUpdateBtn {
+    margin-bottom: 2%;
+}
+
+#stopEditBtn,
+#stopReadBtn {
+    margin-top: 5%;
 }
 
 footer {

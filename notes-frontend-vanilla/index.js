@@ -2,7 +2,7 @@
 const userName = document.getElementById("userName");
 const password = document.getElementById("password");
 const submitLoginBtn = document.getElementById("submitLoginBtn");
-
+const loginMain = document.getElementById("loginMain");
 
 // Fetch för att kontrollera login
 function checkUser(userName, password) {
@@ -24,11 +24,13 @@ function checkUser(userName, password) {
         console.log(data);
 
         if (data.message == "success") {
-            console.log("Lyckad inloggning")
-
+            localStorage.setItem("loggedIn", true);
             window.location.href = "loggedin.html";
+            
         } else {
-            console.log("Felaktig inloggning")
+            let wrongInput = document.createElement("p");
+            wrongInput.innerText = "Du har angett fel uppgifter, vänligen försök igen.";
+            loginMain.append(wrongInput);
         }
     })
 };
