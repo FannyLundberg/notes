@@ -15,4 +15,4 @@
 #### npm install
 
 #### Backend: npm start
-#### Frontend: öppna index.html i localhost (live server)
+#### Frontend: öppna index.html i localhost (live server) genom att högerklicka på filen
