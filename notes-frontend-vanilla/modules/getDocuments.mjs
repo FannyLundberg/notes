@@ -62,7 +62,10 @@ export function printDocuments(documents) {
         docDate.innerText = (documents[i].date).replace("T", " kl: ").replace(".000Z", " ");
         docDiv.append(docDate);
 
-        
+        let docUpdatedDate = document.createElement("span");
+        docUpdatedDate.innerText = "(uppdaterad: " + (documents[i].updated).replace("T", " kl: ").replace(".000Z", "") + ")";
+        docUpdatedDate.id = "docUpdatedDate";
+        docDiv.append(docUpdatedDate);
 
         let editBtn = document.createElement("button");
         editBtn.innerText = "Redigera";
