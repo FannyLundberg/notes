@@ -85,6 +85,33 @@ router.put("/", function(req, res) {
 });
 
 
+// Kunna uppdatera ett specifikt dokument
+router.delete("/", function(req, res) {
+
+    console.log(req.body.title)
+
+    req.app.locals.con.connect((error) => {
+        if (error) {
+            console.log(error)
+        }
+
+        let sql = `
+            DELETE FROM documents 
+            WHERE title = "${req.body.title}"
+        `;
+    
+        req.app.locals.con.query(sql, (error, documents) => {
+            if (error) {
+                console.log(error)
+            }
+            
+            res.json(documents);
+            console.log(documents)
+        })
+    })
+});
+
+
 // Kunna visa ett specifikt dokument
 router.post("/read", function(req, res) {
 

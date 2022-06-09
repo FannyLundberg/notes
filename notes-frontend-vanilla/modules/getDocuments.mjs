@@ -59,8 +59,10 @@ export function printDocuments(documents) {
         docDiv.append(docTitle);
 
         let docDate = document.createElement("span");
-        docDate.innerText = documents[i].date;
+        docDate.innerText = (documents[i].date).replace("T", " kl: ").replace(".000Z", " ");
         docDiv.append(docDate);
+
+        
 
         let editBtn = document.createElement("button");
         editBtn.innerText = "Redigera";
@@ -71,5 +73,10 @@ export function printDocuments(documents) {
         readBtn.innerText = "Läs";
         readBtn.classList = "readBtn";
         docDiv.append(readBtn);
+
+        let deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Radera";
+        deleteBtn.classList = "deleteBtn";
+        docDiv.append(deleteBtn);
     }
 }

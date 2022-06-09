@@ -1,6 +1,7 @@
 import { userLoggedIn, getDocuments, printDocuments } from "./modules/getDocuments.mjs";
 import { addNewDocument } from "./modules/addDocument.mjs";
 import { editDoc, readAndEdit, addUpdateDoc, readDoc } from "./modules/readAndEditDoc.mjs";
+import { deleteDoc } from "./modules/deleteDocument.mjs";
 
 const newDocBtn = document.getElementById("newDocBtn");
 const logOutBtn = document.getElementById("logOutBtn");
@@ -9,15 +10,13 @@ const docSection = document.getElementById("docSection");
 const main = document.getElementById("main");
 const viewDocs = document.getElementById("viewDocs");
 
-
 // Kontrollera att användaren är inloggad innan alla dokument hämtas
 userLoggedIn();
-
 
 // Klick på Redigera- eller Läs-knappen
 docContainer.addEventListener("click", (event) => {
 
-    if (event.target.className === "editBtn" || event.target.className === "readBtn") {
+    if (event.target.className === "editBtn" || event.target.className === "readBtn" || event.target.className === "deleteBtn") {
         actionBtn(event.target.parentNode.id, event.target.className)
     }
 })
@@ -28,6 +27,8 @@ function actionBtn(id, className) {
         readDoc(id);
     } else if (className == "editBtn") {
         editDoc(id);
+    } else if (className == "deleteBtn") {
+        deleteDoc(id);
     } else {
         console.log("Hamnar i else")
     }
