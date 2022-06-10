@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 const mySql = require("mysql2");
+// process.env.TZ = 'UTZ';
 
 
 // Kunna posta ett nytt dokument
@@ -16,6 +17,8 @@ router.post("/", function(req, res) {
             console.log(error)
         }
     
+
+
         let sql = `
             INSERT INTO documents (title, text)
             VALUES ('${req.body.title}', '${req.body.text}')
@@ -40,9 +43,9 @@ router.get("/", function(req, res) {
         if (error) {
             console.log(error)
         }
-    
+
         let sql = `
-            SELECT * FROM documents
+        SELECT * FROM documents
         `;
     
         req.app.locals.con.query(sql, (error, documents) => {

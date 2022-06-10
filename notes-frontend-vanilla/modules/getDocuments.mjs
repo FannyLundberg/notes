@@ -25,6 +25,7 @@ export function userLoggedIn() {
     }
 }
 
+
 // Hämtning av dokument
 export function getDocuments() {
 
@@ -40,7 +41,6 @@ export function getDocuments() {
 
 // Skriva ut alla dokument
 export function printDocuments(documents) {
-    console.log(documents)
 
     docContainer.innerHTML = "";
 
@@ -49,6 +49,9 @@ export function printDocuments(documents) {
     docContainer.append(docHeading);
     
     for (let i = 0; i < documents.length; i++) {
+
+        let createdDate = new Date(documents[i].date).toString();
+        let updatedDate = new Date(documents[i].updated).toString();
 
         let docDiv = document.createElement("div");
         docDiv.id = documents[i].title;
@@ -59,11 +62,15 @@ export function printDocuments(documents) {
         docDiv.append(docTitle);
 
         let docDate = document.createElement("span");
-        docDate.innerText = (documents[i].date).replace("T", " kl: ").replace(".000Z", " ");
+        docDate.innerText = createdDate
+        .replace("Mon", "").replace("Tue", "").replace("Wed", "").replace("Thu", "").replace("Fri", "").replace("Sat", "").replace("Sun", "")
+        .replace("GMT+0200 (centraleuropeisk sommartid)", " ");
         docDiv.append(docDate);
 
         let docUpdatedDate = document.createElement("span");
-        docUpdatedDate.innerText = "(uppdaterad: " + (documents[i].updated).replace("T", " kl: ").replace(".000Z", "") + ")";
+        docUpdatedDate.innerText = "(uppdaterad: " + updatedDate
+        .replace("Mon", "").replace("Tue", "").replace("Wed", "").replace("Thu", "").replace("Fri", "").replace("Sat", "").replace("Sun", "")
+        .replace("GMT+0200 (centraleuropeisk sommartid)", ")");
         docUpdatedDate.id = "docUpdatedDate";
         docDiv.append(docUpdatedDate);
 

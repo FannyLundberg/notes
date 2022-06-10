@@ -15,6 +15,7 @@ app.use(cors());
 
 // Uppkoppling till databasen
 app.locals.con = mySql.createConnection({
+    multipleStatements: true,
     host: "localhost",
     port: "3306",
     user: "notes",

@@ -18,6 +18,7 @@ docContainer.addEventListener("click", (event) => {
 
     if (event.target.className === "editBtn" || event.target.className === "readBtn" || event.target.className === "deleteBtn") {
         actionBtn(event.target.parentNode.id, event.target.className)
+        console.log(event.target.parentNode)
     }
 })
 
@@ -25,6 +26,7 @@ function actionBtn(id, className) {
 
     if (className == "readBtn") {
         readDoc(id);
+        console.log(id)
     } else if (className == "editBtn") {
         editDoc(id);
     } else if (className == "deleteBtn") {
